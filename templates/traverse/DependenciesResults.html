@@ -1,0 +1,104 @@
+       <div id="Depend-Submit-form-header" class="row"   >
+         <div class=" input-group-prepend">
+         <div class="col">
+    <h3>Results:</h3>
+             </div>
+
+         <div class="alert alert-success alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong> {{ results_count }} records found
+</div>
+              </div>
+
+
+
+         <div class="col text-right">
+         <button id="BtnExportresults" class="btn btn-md button-magenta"
+        onclick="exportTableToCSV('ControlM-Results.csv');"> <i class="fa fa-download"></i> Export Results</button>
+     </div>
+
+     </div>
+
+ <hr id="Depend-Submit-form-header2" >
+
+
+
+    {% for jobi in posts %}
+    <div class="card">
+      <div class="panel-heading">
+                <div class="card-header active bg-magenta" id="id-{{ jobi.0 }}{{ jobi.1 }}">
+                     <a class="card-link button2" data-toggle="collapse" data-target="#{{ jobi.0 }}{{ jobi.1 }}" href="#{{ jobi.0 }}{{ jobi.1 }}"> {{ jobi.0 }} : {{ jobi.1 }} </a>
+                </div>
+
+                <div id="{{ jobi.0 }}{{ jobi.1 }}" class="collapse show" aria-labelledby="id-{{ jobi.0 }}{{ jobi.1 }}" data-parent="#accordionControlMJobResult">
+                  <div class="card-body">
+
+            <!-- tab code start -->
+
+                        <nav>
+                              <div class="row">
+                                  <div class="nav nav-tabs col-11" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-{{ jobi.0 }}{{ jobi.1 }}-pred-tab" data-toggle="tab" href="#nav-{{ jobi.0 }}{{ jobi.1 }}-pred" role="tab" aria-controls="nav-{{ jobi.0 }}{{ jobi.1 }}-pred" aria-selected="true">Predeccesor</a>
+                                    <a class="nav-item nav-link" id="nav-{{ jobi.0 }}{{ jobi.1 }}-succ-tab" data-toggle="tab" href="#nav-{{ jobi.0 }}{{ jobi.1 }}-succ" role="tab" aria-controls="nav-{{ jobi.0 }}{{ jobi.1 }}-succ" aria-selected="false">Successors</a>
+                                  </div>
+                                   <div class="col-1">
+                                    <button class="btn btn-md button-magenta btn-sm" title="Copy to clipboard" onclick="CopyHtmlTables( 'tbl--{{ jobi.0 }}--{{ jobi.1 }}--pred', 'tbl--{{ jobi.0 }}--{{ jobi.1 }}--succ');" ><i class="fa fa-paste"></i></button>
+                                  </div>
+
+                              </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade show active" id="nav-{{ jobi.0 }}{{ jobi.1 }}-pred" role="tabpanel" aria-labelledby="nav-{{ jobi.0 }}{{ jobi.1 }}-pred-tab">
+                                  <table id="tbl--{{ jobi.0 }}--{{ jobi.1 }}--pred" class="table table-bordered table-striped" >
+                                       <thead>
+                                        <tr>
+                                          <th scope="col">#</th>
+                                          <th scope="col">Type</th>
+                                          <th scope="col">Job Name</th>
+                                        </tr>
+                                       </thead>
+                                       <tbody>
+                                              {% for row in jobi.2 %}
+                                                 <tr>
+                                                    <th scope="row">{{ row.1 }}</th>
+                                                    <td>{{ row.3 }}</td>
+                                                    <td>{{ row.4 }}</td>
+                                                 </tr>
+                                              {% endfor %}
+                                       </tbody>
+                                  </table>
+                          </div>
+                          <div class="tab-pane fade" id="nav-{{ jobi.0 }}{{ jobi.1 }}-succ" role="tabpanel" aria-labelledby="nav-{{ jobi.0 }}{{ jobi.1 }}-succ-tab">
+                                  <table id="tbl--{{ jobi.0 }}--{{ jobi.1 }}--succ" class="table table-bordered table-striped" >
+                                       <thead>
+                                        <tr>
+                                          <th scope="col">#</th>
+                                          <th scope="col">Type</th>
+                                          <th scope="col">Job Name</th>
+                                        </tr>
+                                       </thead>
+                                      <tbody>
+                                              {% for row in jobi.3 %}
+                                                 <tr>
+                                                    <th scope="row">{{ row.1 }}</th>
+                                                    <td>{{ row.3 }}</td>
+                                                    <td>{{ row.4 }}</td>
+                                                 </tr>
+                                              {% endfor %}
+                                      </tbody>
+                                  </table>
+                          </div>
+
+                        </div>
+
+            <!--tab code end  -->
+                     </div>
+                </div>
+          </div>
+
+  </div>
+
+<!--tab code end *************************************************************** -->
+
+    {% endfor %}
+

@@ -1,0 +1,27 @@
+<div class="container resultdiv2">
+    <div class="row  resultdiv3">
+        <div class="table-resp-custom"  >
+             <table id="tblresult" class="table table-hover">
+                 <col width="800">
+                      <tbody>
+                              {% for rec in dataset %}
+                                 <tr>
+                                     {% for col in rec %}
+                                        <td>{{ col |safe }}</td>
+                                        <td>
+                                            <form  method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="JobName" id="id_JobName" value="{{ col |safe }}" >
+                                            <input type="hidden" name="ObjType" value="Job"  id="id_ObjType_h">
+                                            <input type="hidden" name="FolderName" id="id_FolderName_h">
+                                            <button class="btn  btn-sm button-magenta"><i class="fa fa-download" aria-hidden="true"></i></button>
+                                        </form>
+                                        </td>
+                                     {% endfor %}
+                                   </tr>
+                              {% endfor %}
+                      </tbody>
+                  </table>
+          </div>
+    </div>
+</div>

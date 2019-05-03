@@ -1,0 +1,109 @@
+      <div class="container resultdiv1">
+          <hr>
+          <div class="row">
+         <div class=" input-group-prepend">
+         <div class="col">
+    <h3>Results:</h3>
+             </div>
+
+         <!--<div class="alert alert-success alert-dismissible">-->
+  <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+  <!--<strong>Success!</strong> {{ results_count }} records found-->
+<!--</div>-->
+              </div>
+              <!--<div class="col text-right">-->
+                <!--<button class="btn btn-md button-magenta"  onclick="exportTableToCSV2('ControlM-job-deatils.csv');"><i class="fa fa-download"></i> Export Results</button>-->
+              <!--</div>-->
+      </div>
+  <hr>
+           </div>
+<div class="container resultdiv2">
+
+     <!--<p>-->
+          <!--<div class="row">-->
+
+
+              <!--<input type="text" id="myInputfilter" class="form-control" onkeyup="FilterResulttable()" placeholder="Search for any text.." autofocus title="Type in a name">-->
+
+
+         <!--</div>-->
+    </p>
+  <div class="row  resultdiv3">
+<div class="table-resp-custom"  >
+     <table id="tblresult" class="table table-bordered table-hover">
+               <thead class="button-magenta">
+                <tr>
+                  {% if Authenticated %}  <td></td> {% endif %}
+                  {% for header in headers %}
+                        <th scope="col">{{ header }}</th>
+                  {% endfor %}
+                  </tr>
+               </thead>
+              <tbody>
+
+
+
+                      {% for rec in dataset %}
+
+
+                         <tr>
+                             {% if Authenticated %}
+                             <td>
+<div class="item">
+    {% if rec.0 %}
+ <a href="#"  onclick="get_merge_tracker_info('#id-body-{{ rec.2 }}-{{ forloop.counter }}', '{{ rec.2 }}','{{ rec.3 }}')"   data-toggle="modal" data-target="#id-modal-{{ rec.2 }}-{{ forloop.counter }}">
+  <i class="fas fa-code-branch"></i>
+</a>
+{% else %}
+ <a href="#"  onclick="get_tracker_info('#id-body-{{ rec.2 }}-{{ forloop.counter }}', '{{ rec.2 }}','{{ rec.3 }}')"   data-toggle="modal" data-target="#id-modal-{{ rec.2 }}-{{ forloop.counter }}">
+  <i class="far fa-edit"></i>
+</a>
+{% endif %}
+
+</div>
+<!-- Modal -->
+ <div class="modal fade" id="id-modal-{{ rec.2 }}-{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="id-modal-label-{{ rec.2 }}" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="id-modal-label-{{ rec.2 }}">Traker Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="id-body-{{ rec.2 }}-{{ forloop.counter }}">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+ {% if rec.0 %}
+<button type="button" id="button1-id-body-{{ rec.2 }}-{{ forloop.counter }}" disabled onclick="update_merge_tracker_info('merge', 'id-body-{{ rec.2 }}-{{ forloop.counter }}', '{{ rec.2 }}','{{ rec.3 }}')" class="btn button-magenta saveButton">Merge changes</button>
+<button type="button" id="button3-id-body-{{ rec.2 }}-{{ forloop.counter }}" disabled onclick="update_merge_tracker_info('discard', 'id-body-{{ rec.2 }}-{{ forloop.counter }}', '{{ rec.2 }}','{{ rec.3 }}')" class="btn button-magenta saveButton">Discard changes</button>
+
+{% else %}
+<button type="button" id="button2-id-body-{{ rec.2 }}-{{ forloop.counter }}" disabled onclick="update_tracker_info( 'id-body-{{ rec.2 }}-{{ forloop.counter }}', '{{ rec.2 }}','{{ rec.3 }}')" class="btn button-magenta saveButton">Save changes</button>
+
+{% endif %}
+
+              </div>
+    </div>
+  </div>
+
+</div>
+                             </td> {% endif %}
+                              <td  >{{ rec.1 |safe }}</td>
+                             <td  >{{ rec.2 |safe }}</td>
+                             {% for col in rec|slice:"3:" %}
+                                <td class="textwrap">{{ col |safe }}</td>
+                             {% endfor %}
+                           </tr>
+
+                      {% endfor %}
+
+              </tbody>
+          </table>
+  </div>
+    </div>
+    </div>

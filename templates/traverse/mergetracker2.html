@@ -1,0 +1,129 @@
+            <div class="container">
+            <div id="TotalBodyDiv" class="container">
+            <form method="POST"  class="myForm" id="{{ formid }}">
+                {% csrf_token %}
+              <div class="form-group">
+              <fieldset>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.JOBNAME.label_tag  }} </span>
+                      </div>
+                      {{ mform.JOBNAME }}
+                      {{ cform.JOBNAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.PARENT_FOLDER.label_tag  }}</span>
+                      </div>
+                      {{ mform.PARENT_FOLDER }}
+                      {{ cform.PARENT_FOLDER }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.DEVOPS_OWNER.label_tag  }}</span>
+                      </div>
+                      {{ mform.DEVOPS_OWNER }}
+                      {{ cform.DEVOPS_OWNER }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.TEAM_NAME.label_tag  }}</span>
+                      </div>
+                      {{ mform.TEAM_NAME }}
+                      {{ cform.TEAM_NAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.TEAM_DL.label_tag  }}</span>
+                      </div>
+                      {{ mform.TEAM_DL }}
+                      {{ cform.TEAM_DL }}
+                  </div>
+
+
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.DB_NAME.label_tag  }}</span>
+                      </div>
+                      {{ mform.DB_NAME }}
+                      {{ cform.DB_NAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.TABLE_NAME.label_tag  }}</span>
+                      </div>
+                      {{ mform.TABLE_NAME }}
+                      {{ cform.TABLE_NAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ cform.DEV_MANAGER.label_tag  }}</span>
+                      </div>
+                      {{ mform.DEV_MANAGER }}
+                      {{ cform.DEV_MANAGER }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ cform.BUSINESS_TEAM.label_tag  }}</span>
+                      </div>
+                      {{ mform.BUSINESS_TEAM }}
+                      {{ cform.BUSINESS_TEAM }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ cform.BUSINESS_TEAM_DL.label_tag  }}</span>
+                      </div>
+                      {{ mform.BUSINESS_TEAM_DL }}
+                      {{ cform.BUSINESS_TEAM_DL }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ cform.ENCRCOL_ENCRTYPE.label_tag  }}</span>
+                      </div>
+                      {{ mform.ENCRCOL_ENCRTYPE }}
+                      {{ cform.ENCRCOL_ENCRTYPE }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ cform.REFERENCE_TABLES.label_tag  }}</span>
+                      </div>
+                      {{ mform.REFERENCE_TABLES }}
+                      {{ fform.REFERENCE_TABLES }}
+                  </div>
+
+                            <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ cform.TAGS.label_tag  }}</span>
+                      </div>
+                      {{ mform.TAGS }}
+                      {{ cform.TAGS }}
+                  </div>
+
+                    <p><small>Last updated by :  <strong> {{ UPD_BY }} </strong>  at <strong> {{ UPD_DTTM }} </strong>  </small></p>
+
+              </fieldset>
+              </div>
+            </form>
+             {% if results_msg != '' %}
+                         <div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success!</strong> {{ results_msg }}
+            </div>
+            {% endif %}
+            </div>
+            </div>
+
+
+
+

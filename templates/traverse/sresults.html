@@ -1,0 +1,47 @@
+      <div class="container resultdiv1">
+          <hr>
+          <div class="row">
+              <div class=" input-group-prepend">
+                  <div>
+                      <h3>Results:</h3>
+                  <!--<button  class="btn btn-lg button-magenta" >Results:</button>-->
+              </div>
+
+              </div>
+
+      </div>
+  <hr>
+           </div>
+      <div style="display:none">
+          <lable id="id_CTM_token">{{ CTM_token }}</lable>
+      </div>
+<div class="container resultdiv2">
+
+     <p>
+
+  <div class="row  resultdiv3">
+<div class="table-resp-custom"  >
+     <table id="tblresult" class="table table-bordered table-hover">
+              <thead class="button-magenta">
+                <tr>
+                  {% for header in headers %}
+                        <th scope="col">{{ header }}</th>
+                  {% endfor %}
+                  </tr>
+               </thead>
+              <tbody>
+                      {% for rec in dataset %}
+                         <tr>
+                               <td class="textwrap" >{{ rec.0 |safe }}</td>
+                               <td >{{ rec.1 |safe }}</td>
+
+                             {% for col in rec|slice:"2:" %}
+                                <td class="textwrap">{{ col |safe }}</td>
+                             {% endfor %}
+                           </tr>
+                      {% endfor %}
+              </tbody>
+          </table>
+  </div>
+    </div>
+    </div>

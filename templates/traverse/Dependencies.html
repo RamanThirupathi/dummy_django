@@ -1,0 +1,47 @@
+{% extends "traverse/layout.html" %}
+{% load staticfiles %}
+{% block title %}Traverse > Dependencies{% endblock %}
+{% block stylesheet %}
+ <!--<link rel="stylesheet" type="text/css" href="{% static "/traverse/css/spinner.css" %}"/>-->
+ <link rel="stylesheet" type="text/css" href="{% static '/traverse/css/multiple-select-cstm.css' %}"/>
+{% endblock %}
+    {% block body_block %}
+<div class="container">
+<div id="TotalBodyDiv" class="container">
+<form method="POST" id="Depend-Submit-form">
+    {% csrf_token %}
+  <div class="form-group">
+  <fieldset>
+    <legend id="Scroll-link" onclick="scrollWin(0, 420)" >Jobs information:</legend>
+  {{ form.jobname }}
+     <small id="emailHelp" class="form-text text-muted">Please provide list of jobs either in new line or coma separated. You are always welcome to combine both</small>
+     <small id="emailHelp2" class="form-text text-muted">Example : Job1,Job2</small>
+ <br>
+     <div class="row">
+         <div class="col">
+    <button id="BtnSubmit" class="btn btn-md button-magenta"><i class="fas fa-arrow-circle-right"></i> Submit</button>
+             </div> <div class="col">
+     </div>
+     </div>
+  </fieldset>
+  </div>
+</form>
+</div>
+<hr>
+
+
+
+<div id="Depend-Submit-form-result" class="Container">
+
+</div>
+</div>
+{% endblock %}
+{% block javascript %}
+<!--<script src="{% static '/traverse/JS/multiple-select.js' %}"></script>-->
+<script src="{% static '/traverse/JS/App.js' %}"></script>
+<script>
+
+
+</script>
+
+{% endblock %}

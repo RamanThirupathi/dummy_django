@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{% load staticfiles %}
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block extrastyle %}
+<style>
+ .trav-brand {
+    border-left : 2px solid;
+    padding-left : 10px
+    }
+</style>
+    <!--<link rel="stylesheet" type="text/css" href="{% static "/traverse/css/bootstrap.css" %}"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="{% static "/traverse/css/main.css" %}"/>-->
+{% endblock %}
+
+{% block branding %}
+<!--<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>-->
+   <div class="container" onmouseleave="logoTMO();"  onmouseover ="logoTraverse();">
+        <h1 id="site-name">      <a class="" href="#">
+                   <img id="brndlogo" style="max-width:125px; margin-top: -7px;"     width="110" height="40"
+                        src= "{% static "/traverse/images/TMO-Logo-White2.png" %}" alt=""> </a>
+            <a class = "trav-brand" href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a>
+            </h1>
+       <!--<span style ="font-size :25px"> Traverse Administration </span>-->
+
+   </div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block javascript %}
+<script>
+
+    function logoTMO() {
+        document.getElementById('brndlogo').src  = '/static/traverse/images/TMO-Logo-White2.png';
+    }
+
+function logoTraverse() {
+       document.getElementById('brndlogo').src = '/static/traverse/images/traverse-black.png';
+        }
+
+</script>
+{% endblock %}
+

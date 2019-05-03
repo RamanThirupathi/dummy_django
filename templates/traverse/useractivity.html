@@ -1,0 +1,164 @@
+{% extends "traverse/layout.html" %}
+{% load staticfiles %}
+{% block title %}Traverse > User Activity{% endblock %}
+
+{% block stylesheet %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+<!--<script src="https://codepen.io/anon/pen/aWapBE.js"></script>-->
+<script src="{% static '/traverse/JS/chartjs-plugin-labels.js' %}"></script>
+<script src="{% static '/traverse/JS/randomColor.js' %}"></script>
+<style>
+	.counter
+{
+    background-color: #eaecf0;
+    text-align: center;
+}
+.currentusers,.totalusers,.currreqstcount,.order
+{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+.counter-count
+{
+    font-size: 18px;
+    background-color: #e20074;
+    border-radius: 50%;
+    position: relative;
+    color: white;
+    text-align: center;
+    line-height: 92px;
+    width: 92px;
+    height: 92px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: inline-block;
+}
+
+.counter-count:hover
+{
+    background-color: #e20074;
+    color: black;
+}
+
+.currentusers-p,.totalusers-p,.currreqstcount-p,.design-p
+{
+    font-size: 24px;
+    color: #000000;
+    line-height: 34px;
+}
+
+
+         .table table-bordered table-hover{ table-layout:fixed; /*width:100%;*/
+         }
+         .table{ font-size: 1em; }
+         /*.table td { width: 10px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}*/
+         .table td,.table th { text-align: left; padding: 5px 10px; }
+         .table tbody td.textwrap  {
+         max-width: 100px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap
+         }
+         .table tbody td:hover {
+         text-overflow: clip;
+         white-space: normal;
+         word-break: break-all;
+         }
+
+
+
+</style>
+{% endblock %}
+
+
+{% block body_block %}
+
+<div class="container">
+	<div class="container" style="margin-top: 2%;">
+
+		<div class="counter row">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div class="totalusers">
+							<p class="counter-count"> {{ totalusercount}}</p>
+							<p class="totalusers-p">#Total Users</p>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div class="currentusers">
+							<p class="counter-count"> {{ currusercount}}</p>
+							<p class="currentusers-p"> #{{ month }} Users</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div class="currreqstcount">
+							<p class="counter-count"> {{ currreqstcount}}</p>
+							<p class="currreqstcount-p"> #{{ month }} Requests</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<hr>
+	<div class="row">
+		<!--<div class="col-6">-->
+		<!--<div class="chart-container" style="position: relative; height:200px; width:400px">-->
+		<!--<canvas id="myChart" width="400" height="400"></canvas>-->
+		<!--</div>-->
+			<!--</div>-->
+
+		<div class="col-md-8 col-sm-12">
+			<button id='line' class="btn button button2">Pie Chart</button>
+		<button id='bar' class="btn button button2">Bar Chart</button>
+		<div class="chart-container" style="position: relative; ">
+		<canvas id="myChart2" ></canvas>
+		</div>
+			</div>
+
+	</div>
+
+		<hr>
+<div class="row">
+		<div class="col-md-6">
+
+			     <table id="usersdeatils" class="table table-bordered table-hover">
+              <thead class="button-magenta">
+                <tr>
+
+                        <th scope="col"> UserName</th>
+                        <th scope="col">NoOfRequests</th>
+
+                  </tr>
+               </thead>
+              <tbody>
+                      {% for user in users %}
+                         <tr>
+                                <td class="textwrap">{{ user.0 }} </td>
+                                <td class="textwrap"> {{ user.1 }}</td>
+						 </tr>
+                      {% endfor %}
+              </tbody>
+          </table>
+		</div>
+ </div>
+
+ </div>
+</div>
+ {% endblock %}
+
+{% block javascript %}
+<script src="{% static '/traverse/JS/useractivity.js' %}"></script>
+<script>
+var mydata = {{ stats.1|safe }};
+var mylabels= {{ stats.0|safe }};
+var mymonth = '{{ month }}';
+getmyactivities (mydata,mylabels,mymonth)
+</script>
+
+{% endblock %}

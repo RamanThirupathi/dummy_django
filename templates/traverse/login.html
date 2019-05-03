@@ -1,0 +1,72 @@
+{% extends 'traverse/layout.html' %}
+{% load staticfiles %}
+
+{% block stylesheet %}
+<!--<link rel="stylesheet" type="text/css" href="{% static "/traverse/css/login.css" %}"/>-->
+{% endblock %}
+
+{% block body_block %}
+
+ <div class="fluid-container">
+
+
+<div class="card" id="loginbox">
+  <!--<div class="card-header text-center">-->
+    <!--Welcome-->
+  <!--</div>-->
+<div  class="text-center" style="padding-top:10px" >
+     <a class="navbar-brand" href="{% url 'traverse:home' %}">
+                   <img id="brndlogo" style="max-width:125px; margin-top: -7px;"     width="110" height="40" src= "{% static "/traverse/images/t2.png" %}" alt=""></a>
+</div>
+  <div class="card-body">
+
+	  <!--<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>-->
+      <p style="font :Black">Please sign in using your T-Mobile NTID and password</p>
+<br>
+				<form  action="/traverse/login/" method="POST">
+					{% csrf_token %}
+					   <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text br-15"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" name="username" class="form-control" autofocus required id="id_username" placeholder="NTID" >
+                        </div>
+<br>
+					      <div class="input-group mt-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text br-15"><i class="fas fa-lock"></i></span>
+                            </div>
+                            <input type="password" name="password" class="form-control" required id="id_password"  placeholder="Password" >
+                        </div>
+				<br> <br>
+                    <!--<div class="wp-ipt10">-->
+						<button   class="btn  btn-lg button-magenta "  style="width : 100%">
+							  <i class="fas fa-sign-in-alt"></i> Login
+						</button>
+					<!--</div>-->
+<br>
+					    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{request.GET.next }}">
+    {% endif %}
+
+	{% if message != '' %}
+             <div class="alert alert-danger alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Failed!</strong> {{ message }}
+</div>
+{% endif %}
+
+				</form>
+
+  </div>
+</div>
+
+</div>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script src="{% static '/traverse/JS/login.js' %}"></script>
+{% endblock %}
+

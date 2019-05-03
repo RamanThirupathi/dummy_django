@@ -1,0 +1,129 @@
+{% extends "traverse/layout.html" %}
+{% block title %}Traverse > Job tracker{% endblock %}
+{% load staticfiles %}
+
+ {% block stylesheet %}
+
+ <link rel="stylesheet" type="text/css" href="{% static "/traverse/css/main.css" %}"/>
+<!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css">-->
+<style>
+         .table table-bordered table-hover{ table-layout:fixed; /*width:100%;*/
+         }
+         .table{ font-size: 1em; }
+         /*.table td { width: 10px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}*/
+         .table td,.table th { text-align: left; padding: 5px 10px; }
+         .table tbody td.textwrap  {
+         max-width: 100px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap
+         }
+         .table tbody td:hover {
+         text-overflow: clip;
+         white-space: normal;
+         word-break: break-all;
+         }
+}
+
+
+</style>
+{% endblock %}
+
+
+{% block body_block %}
+
+      <div class="container-fluid resultdiv1">
+
+
+
+
+<div class="container">
+
+    <div class="container resultdiv2">
+
+                  <div class="row">
+              <div class=" input-group-prepend">
+                  <div>
+                  <h2   >Job Tracker:</h2>
+              </div>
+
+              </div>
+
+      </div>
+
+     <p>
+
+
+  <div class="row  resultdiv3">
+<div class="table-resp-custom"  >
+     <table id="tblresult" class="table table-bordered table-hover">
+         <col width="500">
+               <thead class="button-magenta">
+                <tr>
+                    <!--<th class="jobname" >{{ headers.0 |safe }}</th>-->
+                     {% for col in headers  %}
+                       <th scope="col"  > {{ col |safe }}</th>
+                     {% endfor %}
+
+                  </tr>
+               </thead>
+
+          </table>
+  </div>
+    </div>
+
+</div>
+</div>
+
+          <br>
+          <br>
+      </div>
+    {% endblock %}
+
+{% block javascript %}
+<script>
+
+
+$(document).ready(function (){
+    var table = $('#tblresult').DataTable({
+        'ajax': '/traverse/jobtrackerdata',
+        'dom': 'RBfrtip',
+        "aoColumns": [
+               null,
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            {  "sClass": "textwrap" },
+            null
+            ],
+          "scrollX": true,
+         buttons: [ 'pageLength','csv', 'excel' //,'colvis'
+        ],
+          processing: true,
+    'language':{
+       "loadingRecords": "&nbsp;",
+       "processing": "Loading..."
+    }
+    });
+});
+
+
+
+</script>
+{% endblock %}
+
+
+
+
+
+
+

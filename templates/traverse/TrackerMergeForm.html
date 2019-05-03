@@ -1,0 +1,138 @@
+            <div class="container">
+            <div id="TotalBodyDiv" class="container">
+            <form method="POST"  class="myForm" id="{{ formid }}">
+                {% csrf_token %}
+              <div class="form-group">
+              <fieldset>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15"   >  Feild Name:  </span>
+                      </div>
+                    <input type="text" value="Merge Values" class="form-control" readonly="readonly"  >
+                    <input type="text" value="Current Values Values" class="form-control" readonly="readonly"  >
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.JOBNAME.label  }} </span>
+                      </div>
+                      {{ mform.JOBNAME }}
+                      {{ cform.JOBNAME1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.PARENT_FOLDER.label  }}</span>
+                      </div>
+                      {{ mform.PARENT_FOLDER }}
+                      {{ cform.PARENT_FOLDER1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.DEVOPS_OWNER.label }}</span>
+                      </div>
+                      {{ mform.DEVOPS_OWNER }}
+                      {{ cform.DEVOPS_OWNER1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.TEAM_NAME.label  }}</span>
+                      </div>
+                      {{ mform.TEAM_NAME }}
+                      {{ cform.TEAM_NAME1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.TEAM_DL.label  }}</span>
+                      </div>
+                      {{ mform.TEAM_DL }}
+                      {{ cform.TEAM_DL1 }}
+                  </div>
+
+
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.DB_NAME.label  }}</span>
+                      </div>
+                      {{ mform.DB_NAME }}
+                      {{ cform.DB_NAME1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.TABLE_NAME.label  }}</span>
+                      </div>
+                      {{ mform.TABLE_NAME }}
+                      {{ cform.TABLE_NAME1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ mform.DEV_MANAGER.label  }}</span>
+                      </div>
+                      {{ mform.DEV_MANAGER }}
+                      {{ cform.DEV_MANAGER1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ mform.BUSINESS_TEAM.label  }}</span>
+                      </div>
+                      {{ mform.BUSINESS_TEAM }}
+                      {{ cform.BUSINESS_TEAM1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ mform.BUSINESS_TEAM_DL.label  }}</span>
+                      </div>
+                      {{ mform.BUSINESS_TEAM_DL }}
+                      {{ cform.BUSINESS_TEAM_DL1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ mform.ENCRCOL_ENCRTYPE.label }}</span>
+                      </div>
+                      {{ mform.ENCRCOL_ENCRTYPE }}
+                      {{ cform.ENCRCOL_ENCRTYPE1 }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ mform.REFERENCE_TABLES.label  }}</span>
+                      </div>
+                      {{ mform.REFERENCE_TABLES }}
+                      {{ cform.REFERENCE_TABLES1 }}
+                  </div>
+
+                            <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ mform.TAGS.label  }}</span>
+                      </div>
+                      {{ mform.TAGS }}
+                      {{ cform.TAGS1 }}
+                  </div>
+
+                    <p><small>Last updated by :  <strong> {{ UPD_BY }} </strong>  at <strong> {{ UPD_DTTM }} </strong>  </small></p>
+
+              </fieldset>
+              </div>
+            </form>
+             {% if results_msg != '' %}
+                         <div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success!</strong> {{ results_msg }}
+            </div>
+            {% endif %}
+            </div>
+            </div>
+
+
+
+

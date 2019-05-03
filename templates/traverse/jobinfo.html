@@ -1,0 +1,273 @@
+{% extends "traverse/layout.html" %}
+{% load staticfiles %}
+{% block title %}Traverse > Job Info{% endblock %}
+
+    {% block stylesheet %}
+      <link rel="stylesheet" type="text/css" href="{% static '/traverse/css/multiple-select-cstm.css' %}"/>
+<style>
+         .table table-bordered table-hover{ table-layout:fixed; /*width:100%;*/
+         }
+         .table{ font-size: 1em; }
+         /*.table td { width: 10px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}*/
+         .table td,.table th { text-align: left; padding: 5px 10px; }
+         .table tbody td.textwrap  {
+         max-width: 100px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap
+         }
+         .table tbody td:hover {
+         text-overflow: clip;
+         white-space: normal;
+         word-break: break-all;
+         }
+</style>
+    {% endblock %}
+
+    {% block body_block %}
+
+<div class="container mb-5" >
+    <div class="row">
+
+        <div class="col-lg-3 col-md-3 col-sm-12 col divcolorgreen1"  onmouseleave="Validatecheckbox(this)" >
+            <br>
+                   <div class="card-header bg-magenta " id="headi">
+                        <lable>Columns info:</lable>
+                   </div>
+            <div class="card ">
+                <div class="panel-heading">
+                    <div class="card-header bg-magenta active" id="headingone">
+                        <a class="card-link button2" data-toggle="collapse" data-target="#collapseone" href="#collapseone">Job info </a>
+                    </div>
+                    <div id="collapseone" class="collapse show" aria-labelledby="headingone" data-parent="#accordionExample">
+                          <div class="card-body">
+
+                              <label><input type="checkbox" name="checkbox" value="value" onClick="selectallcheckbox(this ,'jobgroupcheck' )"><span class="checkbox-magenta">Select All</span></label>
+
+                              <div>
+                                  <div class="container">
+                                      <label> <input type="checkbox" class="allgroupcheck jobgroupcheck alertgroupcheck condgroupcheck" name="List_of_Columns" value="Category" id="id_category" checked>
+                         <span class="checkbox-magenta">Category</span></label><br>
+                     <label> <input type="checkbox" class="allgroupcheck jobgroupcheck alertgroupcheck condgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.0.0 }}" id="{{ choice.id_for_label }}" checked>
+                         <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.0.1 }}</span></label><br>
+                       <label ><input type="checkbox"  class="allgroupcheck jobgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.1.0 }}" id="{{ choice.id_for_label }}" checked>
+                           <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.1.1 }}</span></label><br>
+                          <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.21.0 }}" id="{{ choice.id_for_label }}" checked>
+                        <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.21.1 }}</span></label><br>
+                                      <label ><input type="checkbox"  class="allgroupcheck jobgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.2.0 }}" id="{{ choice.id_for_label }}" checked>
+                          <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.2.1 }}</span></label><br>
+                       <label ><input type="checkbox" class="allgroupcheck jobgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.3.0 }}" id="{{ choice.id_for_label }}" checked>
+                           <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.3.1 }}</span></label><br>
+                       <label ><input type="checkbox"  class="allgroupcheck jobgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.4.0 }}" id="{{ choice.id_for_label }}" checked>
+                           <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.4.1 }}</span></label><br>
+                      <label ><input type="checkbox" class="allgroupcheck jobgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.5.0 }}" id="{{ choice.id_for_label }}" checked>
+                          <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.5.1 }}</span></label><br>
+                  <label ><input type="checkbox" class="allgroupcheck jobgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.6.0 }}" id="{{ choice.id_for_label }}">
+                      <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.6.1 }}</span></label><br>
+                     <label ><input type="checkbox" class="allgroupcheck jobgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.7.0 }}" id="{{ choice.id_for_label }}">
+                         <span class="checkbox-magenta"> {{ form.List_of_Columns.field.choices.7.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck jobgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.8.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.8.1 }}</span></label><br>
+                        </div>
+                              </div>
+
+                          </div>
+                    </div>
+                    </div>
+                <div class="panel-heading">
+                    <div class="card-header bg-magenta active" id="headingTwo">
+                      <a class="card-link button2 "   data-toggle="collapse" data-target="#collapseTwo"   href="#collapseTwo">
+                          Dependency
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                          <div class="card-body">
+                              <label><input type="checkbox" name="checkbox" value="value" onClick="selectallcheckbox(this ,'Dependgroupcheck' )"><span class="checkbox-magenta">Select All</span></label>
+    <div>
+                              <div class="container">
+
+                    <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.9.0 }}" id="{{ choice.id_for_label }}">
+                        <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.9.1 }}</span></label><br>
+                    <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.10.0 }}" id="{{ choice.id_for_label }}">
+                        <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.10.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.11.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.11.1 }}</span></label><br>
+                <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.12.0 }}" id="{{ choice.id_for_label }}">
+                    <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.12.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck"  name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.13.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.13.1 }}</span></label><br>
+                    <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.14.0 }}" id="{{ choice.id_for_label }}">
+                        <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.14.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.15.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.15.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.16.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.16.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.17.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.17.1 }}</span></label><br>
+                   <label><input type="checkbox" class="allgroupcheck Dependgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.18.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.18.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Dependgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.19.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.19.1 }}</span></label> <br> <label><input type="checkbox" class="allgroupcheck Dependgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.20.0 }}" id="{{ choice.id_for_label }}">
+                                  <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.20.1 }}</span></label>
+
+                        </div>
+                              </div>
+
+                          </div>
+                    </div>
+                </div>
+                    <div class="panel-heading">
+                    <div class="card-header bg-magenta active" id="headingThree">
+                      <a class="card-link button2"  data-toggle="collapse" data-target="#collapseThree" href="collapseThree">
+                          Job Tracker
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                          <div class="card-body">
+                              <label><input type="checkbox" name="checkbox" value="value" onClick="selectallcheckbox(this ,'Tbltrkgroupcheck' )"><span class="checkbox-magenta">Select All</span></label>
+  <div>
+                   <div class="container">
+
+                    <!--<label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.20.0 }}" id="{{ choice.id_for_label }}">-->
+                        <!--<span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.20.1 }}</span></label><br>-->
+                    <!--<label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.21.0 }}" id="{{ choice.id_for_label }}">-->
+                        <!--<span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.21.1 }}</span></label><br>-->
+                   <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.22.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.22.1 }}</span></label><br>
+                <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.23.0 }}" id="{{ choice.id_for_label }}">
+                    <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.23.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck"  name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.24.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.24.1 }}</span></label><br>
+                    <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.25.0 }}" id="{{ choice.id_for_label }}">
+                        <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.25.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck" name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.26.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.26.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.27.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.27.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.28.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.28.1 }}</span></label><br>
+                   <label><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.29.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.29.1 }}</span></label><br>
+                   <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.30.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.30.1 }}</span></label> <br>
+                   <label ><input type="checkbox" class="allgroupcheck Tbltrkgroupcheck " name="List_of_Columns" value="{{ form.List_of_Columns.field.choices.31.0 }}" id="{{ choice.id_for_label }}">
+                       <span class="checkbox-magenta">{{ form.List_of_Columns.field.choices.31.1 }}</span></label> <br>
+
+                                              </div>
+
+                              </div>
+
+                          </div>
+                    </div>
+                    </div>
+            </div>
+
+        </div>
+        <br>
+
+         <div class="col-lg-9 col-md-9 col-sm-12  ">
+             <br>
+             <div class="container  border">
+            <div class="container  ">
+                <form method="POST" id="Jobinfo-Submit-form">
+                    {% csrf_token %}
+                <div class=" formdiv" id="formdiv">
+                <div class="row">
+                <div class="col-12 ">
+                    <fieldset>
+                        <legend id="Scroll-link" onclick="scrollWin(0, 400)">Job information:</legend>
+                          <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text span-fw-15 ">Folder Name:</span>
+                                      </div>
+                                      {{ form.FolderName }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text span-fw-15 ">Job Name:</span>
+                                      </div>
+                                       {{ form.JobName }}
+                                </div>
+                             </div>
+                            </div>
+                        <br>
+                            <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text span-fw-15 ">Host Name:</span>
+                                      </div>
+                                       {{ form.HostName }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text span-fw-15 ">Datacenter Name:</span>
+                                      </div>
+                                       {{ form.DatacenterName }}
+                                </div>
+                            </div>
+                          </div>
+                        <br>
+                            <div class="row ">
+                                <div class="col-md-6 col-sm-12">
+
+                                    <div class="input-group mb-3">
+                                          <div class="input-group-prepend">
+                                              <!--<span class="input-group-text">Custom1:</span>-->
+                                                {{ form.Select_Column_field1 }}
+                                          </div>
+                                              {{ form.Select_Column_Value1 }}
+                                            </div>
+                                </div>
+
+                                 <div class="col-md-6 col-sm-12">
+
+                                    <div class="input-group mb-3">
+                                          <div class="input-group-prepend">
+                                              <!--<span class="input-group-text">Custom2:</span>-->
+                                                {{ form.Select_Column_field2 }}
+                                          </div>
+                                              {{ form.Select_Column_Value2 }}
+                                            </div>
+                                </div>
+
+                            </div>
+
+                         <br>
+                      <button class="btn  btn-md button-magenta"><i class="fas fa-arrow-circle-right"></i> Submit</button>
+                    </fieldset>
+                <br>
+            </div>
+                    <small>Note : All input fields supports wildcard search char " * " .</small>
+        </div>
+      </div>
+      <br>
+  </form>
+        </div>
+                 </div>
+
+
+<br>
+        <div id="Jobinfo-Submit-form-result" class="Container resultdmainiv">
+
+</div>
+</div>
+
+<!--<div class="col-lg-1 col-md-0 col-sm-12">-->
+
+<!--</div>-->
+
+      </div>
+     </div>
+    {% endblock %}
+
+{% block javascript %}
+<script src="{% static '/traverse/JS/App.js' %}"></script>
+ {% endblock %}

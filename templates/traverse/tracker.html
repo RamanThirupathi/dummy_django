@@ -1,0 +1,116 @@
+            <div class="container">
+            <div id="TotalBodyDiv" class="container">
+            <form method="POST"  class="myForm" id="{{ formid }}">
+                {% csrf_token %}
+              <div class="form-group">
+              <fieldset>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.JOBNAME.label  }} </span>
+                      </div>
+                      {{ form.JOBNAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.PARENT_FOLDER.label  }}</span>
+                      </div>
+                      {{ form.PARENT_FOLDER }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.DEVOPS_OWNER.label  }}</span>
+                      </div>
+                      {{ form.DEVOPS_OWNER }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.TEAM_NAME.label  }}</span>
+                      </div>
+                      {{ form.TEAM_NAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.TEAM_DL.label  }}</span>
+                      </div>
+                      {{ form.TEAM_DL }}
+                  </div>
+
+
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.DB_NAME.label  }}</span>
+                      </div>
+                      {{ form.DB_NAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.TABLE_NAME.label  }}</span>
+                      </div>
+                      {{ form.TABLE_NAME }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ form.DEV_MANAGER.label  }}</span>
+                      </div>
+                      {{ form.DEV_MANAGER }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ form.BUSINESS_TEAM.label  }}</span>
+                      </div>
+                      {{ form.BUSINESS_TEAM }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ form.BUSINESS_TEAM_DL.label  }}</span>
+                      </div>
+                      {{ form.BUSINESS_TEAM_DL }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15">{{ form.ENCRCOL_ENCRTYPE.label  }}</span>
+                      </div>
+                      {{ form.ENCRCOL_ENCRTYPE }}
+                  </div>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ form.REFERENCE_TABLES.label  }}</span>
+                      </div>
+                      {{ form.REFERENCE_TABLES }}
+                  </div>
+
+                            <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text span-fw-15 ">{{ form.TAGS.label  }}</span>
+                      </div>
+                      {{ form.TAGS }}
+                  </div>
+
+                    <p><small>Last updated by :  <strong> {{ UPD_BY }} </strong>  at <strong> {{ UPD_DTTM }} </strong>  </small></p>
+
+              </fieldset>
+              </div>
+            </form>
+             {% if results_msg != '' %}
+                         <div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success!</strong> {{ results_msg }}
+            </div>
+            {% endif %}
+            </div>
+            </div>
+
+
+
+

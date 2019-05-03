@@ -1,0 +1,181 @@
+{% extends "traverse/layout.html" %}
+{% load staticfiles %}
+{% block title %}Traverse > Job Status{% endblock %}
+
+    {% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{% static '/traverse/css/multiple-select-cstm.css' %}"/>
+    <!--<link rel="stylesheet" type="text/css" href="https:////cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
+<style>
+         .table table-bordered table-hover{ table-layout:fixed; /*width:100%;*/
+         }
+         .table{ font-size: 1em; }
+         /*.table td { width: 10px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}*/
+         .table td,.table th { text-align: left; padding: 5px 10px; }
+         .table tbody td.textwrap  {
+         max-width: 100px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap
+         }
+         .table tbody td:hover {
+         text-overflow: clip;
+         white-space: normal;
+         word-break: break-all;
+         }
+</style>
+
+    {% endblock %}
+
+    {% block body_block %}
+<div class="container">
+<div class="container border mb-3 mt-3">
+  <form method="post" id="Status-Submit-form">
+    {% csrf_token %}
+
+      <div class="container   " >
+          <div class="row">
+               <div class="col-12 ">
+                <fieldset>
+                    <legend id="Scroll-link" >Job Status:</legend>
+                                            <div class="row">
+
+                                                                             <div class="col">
+                            <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text span-fw-15">Datacenter Name:</span>
+                                  </div>
+                                   {{ form.DatacenterName }}
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text span-fw-15">Status:</span>
+                                  </div>
+                                   {{ form.status }}
+                            </div>
+                        </div>
+
+
+
+                        </div>
+                    <br>
+                        <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text span-fw-15 ">Folder Name:</span>
+                                  </div>
+                                  {{ form.FolderName }}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text span-fw-15">Host Name:</span>
+                                  </div>
+                                   {{ form.HostName }}
+                            </div>
+                        </div>
+
+                      </div>
+                     <br>
+                  <div class="row">
+
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text span-fw-15 ">Job Name:</span>
+                                  </div>
+                                   {{ form.JobName }}
+                            </div>
+                         </div>
+
+
+                  </div>
+
+
+                    <br>
+                     <button  class="btn  btn-md button-magenta"><i class="fas fa-arrow-circle-right"></i> Submit</button>
+                </fieldset>
+                <br>
+            </div>
+        </div>
+      </div>
+
+  </form>
+</div>
+
+
+<div id="Status-Submit-form-result" class="Container" style="display:none">
+
+    <div class="container resultdiv1">
+          <hr>
+          <div class="row">
+              <div class=" input-group-prepend">
+                  <div>
+                      <h3>Results:</h3>
+                  <!--<button  class="btn btn-lg button-magenta" >Results:</button>-->
+              </div>
+
+              </div>
+
+      </div>
+  <hr>
+           </div>
+      <div style="display:none">
+          <lable id="id_CTM_token">{{ CTM_token }}</lable>
+      </div>
+<div class="container resultdiv2">
+
+     <p>
+
+  <div class="row  resultdiv3">
+<div class="table-resp-custom"  >
+     <table id="tblresult" class="table table-bordered table-hover">
+              <thead class="button-magenta">
+                <tr>
+                         <th scope="col"> Datacenter </th>
+                        <th scope="col"> JobName</th>
+                        <th scope="col"> Folder</th>
+                        <th scope="col"> Type</th>
+                        <th scope="col">Status </th>
+                        <th scope="col"> #OfRuns</th>
+                        <th scope="col"> StartTime</th>
+                        <th scope="col"> EndTime</th>
+                        <th scope="col"> Logfile</th>
+
+                  </tr>
+               </thead>
+
+          </table>
+  </div>
+    </div>
+    </div>
+
+</div>
+    <br>
+    <br>
+</div>
+    {% endblock %}
+
+{% block javascript %}
+
+<!--<script src="{% static '/traverse/JS/multiple-select.js' %}"></script>-->
+<script src="{% static '/traverse/JS/App.js' %}"></script>
+<!--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
+
+
+<script>
+$(function() {
+$('#id_status').multipleSelect({
+ placeholder: "Choose status",
+ Spanid: "id_status-span",
+ minimumCountSelected: 9
+});
+});
+
+</script>
+{% endblock %}
+

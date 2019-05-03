@@ -1,0 +1,160 @@
+{% extends 'traverse/layout.html' %}
+{% load staticfiles %}
+{% block title %}Traverse > Downloads{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block body_block %}
+
+
+
+
+     <div class="container mb-5 ">
+         <div class="row">
+             <div class="col-md-10 col-sm-12 col-lg-10">
+<fieldset>
+                    <legend id="Scroll-link2"  >Downloads</legend>
+</fieldset>
+                               <div class="alert  alert-danger alert-dismissible fade show  border-magenta  mb-3" role="alert">
+  <!--<div class="card-header border-bottom-magenta ">-->
+    <!--Downloads Tips-->
+  <!--</div>-->
+  <!--<div class="card-body  ">-->
+    <h5 class="card-title">Keyword search </h5>
+        <p class="mb-0">Please select below options to download your control-M definitions. Both Jobname and FolderName supports wildcard search.<br>
+            It will display all possible matches as per your search criteria . <br>
+         <small> example1 *job1* <br> example1 *FolderName*</small>
+        </p>
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <!--</div>-->
+</div>
+
+
+
+
+              <div class="card">
+          <div class="panel-heading">
+           <div class="card-header  active bg-magenta" id="headingOne">
+            <a class="card-link button2" data-toggle="collapse" data-target="#collapsedownloads" href="#collapsedownloads">All Downloads </a>
+           </div>
+
+         <div id="collapsedownloads" class="collapse show" aria-labelledby="headingdownloads" data-parent="#accordionExample">
+           <div id ="download-folder-div" class="card-body ">
+            <a class="card-link "  href="/media/downloads/ContromM_Template.xml" download >Control-M Job Template</a>
+             <a class="card-link "  href="/media/downloads/CTM_MFT_INTAKE.xlsx" download>Control-M MFT Intake form</a>
+      </div>
+    </div>
+  </div>
+  </div>
+<br>
+       <!--<div class="accordion " id="accordionExample">-->
+         <div class="card">
+          <div class="panel-heading">
+           <div class="card-header active bg-magenta " id="headingOne">
+            <a class="card-link button2" data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">Folder Name </a>
+           </div>
+
+         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+           <div id ="download-folder-div" class="card-body ">
+           <form id="Download-folder-Submit-form" method="POST">
+              {% csrf_token %}
+              <div class="row">
+                         <div class="col-md-9 col-sm-12">
+                                <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">Folder Name:</span>
+                                      </div>
+                                      <input type="text" name="FolderName" class="form-control" placeholder="Folder name" maxlength="1000" required id="id_FolderName_F">
+
+                                </div>
+                         </div>
+                        <div class="col-md-3 col-sm-12">
+                                        <button   class="btn  btn-md button-magenta"><i class="fas fa-arrow-circle-right"></i> Submit</button>
+
+                        </div>
+              </div>
+
+          </form>
+                         <div id="Download-Folder-Submit-form-result">
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+     <br>
+         <div class="card">
+      <div class="panel-heading">
+    <div class="card-header active bg-magenta" id="headingTwo">
+
+     <a class="card-link button2" data-toggle="collapse" data-target="#collapseTwo" href="#collapseTwo">Job Name </a>
+
+    </div>
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+           <form id="Download-job-Submit-form" method="POST">
+               {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-9 col-sm-12">
+                                <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text">Job Name:</span>
+                                      </div>
+                                       <input type="text" name="JobName" class="form-control" placeholder="Job name" maxlength="1000" required id="id_JobName_J">
+                                </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                          <button   class="btn  btn-md button-magenta"><i class="fas fa-arrow-circle-right"></i> Submit</button>
+
+                    </div>
+              </div>
+           </form>
+
+          <div id="Download-Job-Submit-form-result">
+
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+             <!--<div class="col-md-3 col-sm-12 col-lg-3">-->
+
+
+                 <!--<div class="card border-magenta mb-3 ">-->
+  <!--&lt;!&ndash;<div class="card-header">&ndash;&gt;-->
+    <!--&lt;!&ndash;Downloads Tips&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--<div class="card-body  ">-->
+    <!--<h5 class="card-title">Keyword search </h5>-->
+        <!--<p class="card-text">Please select below options to download your control-M definitions. Both Jobname and FolderName supports wildcard search.<br>-->
+            <!--It will display all possible matches as per your search criteria . <br>-->
+         <!--<small> example1 *job1* <br> example1 *FolderName*</small>-->
+        <!--</p>-->
+
+  <!--</div>-->
+<!--</div>-->
+
+             <!--</div>-->
+</div>
+
+
+</div>
+
+
+
+<!--</div>-->
+{% endblock %}
+
+
+{% block javascript %}
+<script src="{% static '/traverse/JS/App.js' %}"></script>
+<script src="{% static '/traverse/JS/tracker.js' %}"></script>
+{% endblock %}
+
